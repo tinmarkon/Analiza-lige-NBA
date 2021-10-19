@@ -1,9 +1,6 @@
 # Analiza-lige-NBA
 
-Analiziral bom statistične podatke prvih 200 igralcev ter njihovih ekip v ligi NBA. 
-[NBA](https://www.basketball-reference.com/leagues/NBA_2021_per_game.html)
-
-
+Analiziral bom statistične podatke prvih 200 igralcev ter njihovih ekip v ligi [NBA](https://www.basketball-reference.com/leagues/NBA_2021_per_game.html).
 
 
 Za vsakega igralca bom zajel naslednje podatke:
@@ -16,8 +13,6 @@ Za vsakega igralca bom zajel naslednje podatke:
 * odstotek uspešnega meta
 * blokade
 * izgubljene žoge
-
-
 
 
 Delovne hipoteze:
