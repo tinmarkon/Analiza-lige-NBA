@@ -31,3 +31,4 @@ Delovne hipoteze:
 * Ali obstajajo igralci zaradi katerih ekipe redno zmagujejo
 * Ali obstaja povezava med dobro obrambno igro in zmago na tekmi
 * Ali ekipe, ki prepotujejo največ kilometrov v povprečju izgubljajo več
+* Ali obstaja povezava med zmagami v podaljških in uspešnostjo ekipe
