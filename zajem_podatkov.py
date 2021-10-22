@@ -26,11 +26,10 @@ def save_text(text, file, directory):
     path = os.path.join(directory, file)
     with open(file, mode="w", encoding="utf-8") as f:
         f.write(text)
-
-
+        
 
 def save_page(link, file, directory):
-    """Funkcija sprejme """
+    """Funkcija sprejme link do spletne strani in zapiše html v datoteko"""
     string = import_data(link)
     save_text(string, file, directory)
 
