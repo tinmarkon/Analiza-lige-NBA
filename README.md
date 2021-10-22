@@ -15,6 +15,17 @@ Za vsakega igralca bom zajel naslednje podatke:
 * izgubljene žoge
 
 
+Za vsako ekipo bom zajel:
+* število igranih minut
+* uspešnost meta
+* uspešnost meta za 3
+* uspešnost prostega meta
+* skoki v napadu in obrambi
+* blokade
+* izgubljene žoge
+* točke
+
+
 Delovne hipoteze:
 * Ali obstaja povezava med 'učinkovitostjo' igralca (in ekipe) in uspešnostjo ekipe
 * Ali obstajajo igralci zaradi katerih ekipe redno zmagujejo
