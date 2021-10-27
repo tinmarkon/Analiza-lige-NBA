@@ -1,5 +1,4 @@
 import requests
-import re
 import os
 
 
@@ -10,7 +9,7 @@ path = os.path.join(directory, testna_datoteka)
 
 
 def import_data(link):
-    """Funkcija sprejme link do strani in vrača string"""
+    """Funkcija sprejme link do strani in vrača niz"""
     try:
         string = requests.get(link)
     except requests.exceptions.ConnectionError as e:
