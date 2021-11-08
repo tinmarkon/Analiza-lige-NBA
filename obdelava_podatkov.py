@@ -123,7 +123,6 @@ def extract_teams(niz):
 players_file = read_file(directory, players_file)
 teams_file = read_file(directory, teams_file)
 
-
 ### EKIPE ###
 teams_block = re.findall(sample_block_teams, teams_file)[0] ## Najdem kos htmlja v katerem so vse ekipe
 teams = extract_teams(teams_block)
@@ -134,8 +133,6 @@ players_block = re.findall(sample_block_players, players_file)[0]
 players = extract_players(players_block)
 write_csv(players, [header for header in players[0].keys()], 'players.csv')
 
-
-#write_csv(players, [glava for glava in players[0].keys()], 'testnic.csv')
 
 ### Mislim da nastane problem, ko se igralec ponovi, kaj se zgodi, če že imamo igralca v eni ekipi in potem sredi sezone preneha in začne igrati za neko drugo ekipo? 
 ### Bi potem gledal uteženo povprečje glede na tekme, ki jih je igral. Mislim da morem te robne primere poloviti v funkciji extract players
