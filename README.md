@@ -21,8 +21,10 @@ Za vsako ekipo bom zajel:
 * uspešnost meta za 3
 * uspešnost prostega meta
 * skoki v napadu in obrambi
+* asistence
 * blokade
 * izgubljene žoge
+* osebne napake
 * točke
 
 
@@ -30,5 +32,4 @@ Delovne hipoteze:
 * Ali obstaja povezava med 'učinkovitostjo' igralca (in ekipe) in uspešnostjo ekipe
 * Ali obstajajo igralci zaradi katerih ekipe redno zmagujejo
 * Ali obstaja povezava med dobro obrambno igro in zmago na tekmi
-* Ali ekipe, ki prepotujejo največ kilometrov v povprečju izgubljajo več
 * Ali obstaja povezava med zmagami v podaljških in uspešnostjo ekipe
