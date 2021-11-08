@@ -2,10 +2,12 @@ import requests
 import os
 
 
-test_link = "https://www.basketball-reference.com/leagues/NBA_2021_per_game.html"
-testna_datoteka = "testni.html"
+players_link = "https://www.basketball-reference.com/leagues/NBA_2021_per_game.html"
+players_file = "players.html"
+teams_link = "https://www.basketball-reference.com/leagues/NBA_2021.html"
+teams_file = "teams.html"
 directory = "C:/Users/TinM/Documents/Studij/Programiranje 1/Analiza-lige-NBA"
-path = os.path.join(directory, testna_datoteka)
+
 
 
 def import_data(link):
@@ -27,25 +29,17 @@ def save_text(text, file, directory):
         f.write(text)
 
 
-def save_page(link, file, directory):
+def save_page(link, file, directory, force=False):
     """Funkcija sprejme link do spletne strani in zapiše html v datoteko"""
-    string = import_data(link)
-    save_text(string, file, directory)
+    if os.path.isfile(file) and not force:
+        print(f"Datoteka {file} že obstaja!")
+    else:
+        string = import_data(link)
+        save_text(string, file, directory)
 
-
-
-
-
-
-
-def main(redownload=True, reparse=True):
-    ### Naredim request in shranim v html datoteko ###
-    save_page(test_link, testna_datoteka, directory)
-    
-    ### TODO priredi funckijo main, da ne bo potrebno vsakič downloadat in/ali parsat datoteke
-
-
-
+def main():
+    save_page(players_link, players_file, directory)
+    save_page(teams_link, teams_file, directory)
 
 
 if __name__ == "__main__":
