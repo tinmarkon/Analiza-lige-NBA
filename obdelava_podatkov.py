@@ -17,19 +17,21 @@ sample_block_teams = re.compile(r'<table class="stats_table sortable " id="per_g
                                 r'.*?</table>',
                                 flags=re.DOTALL)
 
-sample_player = re.compile( r'<tr class="full_table" >.*?data-stat="player" csk="(?P<Igralec>\S*)"'
-                            r'.*?<td class="center " data-stat="pos" >(?P<Pozicija>\S*)</td>'
-                            r'.*?<td class="right non_qual" data-stat="fg_per_g" >(?P<FG>\S*)</td>'
-                            r'<td class="right non_qual" data-stat="fga_per_g" >(?P<FGA>\S*)</td>'
-                            r'.*?<td class="right non_qual" data-stat="trb_per_g" >(?P<Skoki>\S*)</td>'
-                            r'<td class="right non_qual" data-stat="ast_per_g" >(?P<Asistence>\S*)</td>'
-                            r'<td class="right non_qual" data-stat="stl_per_g" >(?P<Ukradene_žoge>\S*)</td>'
-                            r'<td class="right non_qual" data-stat="blk_per_g" >(?P<Blokade>\S*)</td>'
-                            r'<td class="right non_qual" data-stat="tov_per_g" >(?P<Izgubljene_žoge>\S*)</td>'
-                            r'.*?<td class="right non_qual" data-stat="pts_per_g" >(?P<Tocke>\S*)</td>',
+sample_player = re.compile( r'<th scope="row" class="right " data-stat="ranker" csk="\d*" >(?P<Stevilka>\d*)</th>'
+                            r'<td class="left " data-append-csv="\S*" data-stat="player" csk="\D*" ><a href="/players/\w/\S*.html">(?P<Igralec>\D*)</a></td>'
+                            r'.*?<td class="\D* " data-stat="pos" >(?P<Pozicija>\S*)</td>'
+                            r'.*?<td class="\D* " data-stat="team_id" ><a href="/teams/\w*\/2021.html\">(?P<ID_ekipe>\w*)</a></td>'
+                            r'.*?<td class="\D*" data-stat="fg_per_g" >(?P<FG>\d\.\d)</td>'
+                            r'<td class="\D*" data-stat="fga_per_g" >(?P<FGA>\S*)</td>'
+                            r'.*?<td class="\D*" data-stat="trb_per_g" >(?P<TRB>\S*)</td>'
+                            r'<td class="\D*" data-stat="ast_per_g" >(?P<AST>\S*)</td>'
+                            r'<td class="\D*" data-stat="stl_per_g" >(?P<STL>\S*)</td>'
+                            r'<td class="\D*" data-stat="blk_per_g" >(?P<BLK>\S*)</td>'
+                            r'<td class="\D*" data-stat="tov_per_g" >(?P<TOV>\S*)</td>'
+                            r'.*?<td class="\D*" data-stat="pts_per_g" >(?P<PTS>\S*)</td>',
                             flags=re.DOTALL)
 
-sample_team = re.compile(   r'<a href=\'/teams/\w*\/2021.html\'>(?P<Ekipa>\w*\s\w*\s?\w*?)</a>\*?</td>'
+sample_team = re.compile(   r'<a href=\'/teams/(?P<ID_ekipe>\w*)\/2021.html\'>(?P<Ekipa>\w*\s\w*\s?\w*?)</a>\*?</td>'
                             r'<td class="right " data-stat="g" >(?P<G>\d\d)</td>'
                             r'<td class="right " data-stat="mp" >(?P<MP>\S*)</td>'
                             r'<td class="right " data-stat="fg" >(?P<FG>\S*)</td>'
@@ -77,16 +79,18 @@ def extract_players(niz):
     players = []
     for player in sample_player.finditer(niz):
         players.append({
+            'Stevilka igralca': player.groupdict()['Stevilka'],
             'Igralec': player.groupdict()['Igralec'],
             'Pozicija': player.groupdict()['Pozicija'],
+            'ID ekipe': player.groupdict()['ID_ekipe'],
             'FG': float(player.groupdict()['FG']),
             'FGA': float(player.groupdict()['FGA']),
-            'Skoki': float(player.groupdict()['Skoki']),
-            'Asistence': float(player.groupdict()['Asistence']),
-            'Vkradene žoge': float(player.groupdict()['Ukradene_žoge']),
-            'Blokade': float(player.groupdict()['Blokade']),
-            'Izgubljene žoge': float(player.groupdict()['Izgubljene_žoge']),
-            'Tocke': float(player.groupdict()['Tocke']),        
+            'Skoki': float(player.groupdict()['TRB']),
+            'Asistence': float(player.groupdict()['AST']),
+            'Ukradene žoge': float(player.groupdict()['STL']),
+            'Blokade': float(player.groupdict()['BLK']),
+            'Izgubljene žoge': float(player.groupdict()['TOV']),
+            'Tocke': float(player.groupdict()['PTS']),        
         })
     return players
 
@@ -94,6 +98,7 @@ def extract_teams(niz):
     teams = []
     for team in sample_team.finditer(niz):
         teams.append({
+            "ID ekipe": team.groupdict()['ID_ekipe'],
             'Ekipa': team.groupdict()['Ekipa'],
             'Stevilo tekem': float(team.groupdict()['G']),
             'Igrane minute': float(team.groupdict()['MP']),
@@ -114,10 +119,6 @@ def extract_teams(niz):
         })
     return teams
         
-
-            
-
-
     
 ### BRANJE PODATKOV ###
 players_file = read_file(directory, players_file)
@@ -132,7 +133,3 @@ write_csv(teams, [header for header in teams[0].keys()], 'teams.csv')
 players_block = re.findall(sample_block_players, players_file)[0]
 players = extract_players(players_block)
 write_csv(players, [header for header in players[0].keys()], 'players.csv')
-
-
-### Mislim da nastane problem, ko se igralec ponovi, kaj se zgodi, če že imamo igralca v eni ekipi in potem sredi sezone preneha in začne igrati za neko drugo ekipo? 
-### Bi potem gledal uteženo povprečje glede na tekme, ki jih je igral. Mislim da morem te robne primere poloviti v funkciji extract players
