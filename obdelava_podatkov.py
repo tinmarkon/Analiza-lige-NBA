@@ -76,6 +76,7 @@ def write_csv(slovarji, imena_polj, ime_datoteke):
 
 ### FUNKCIJE ZA SLOVARJE ###
 def extract_players(niz):
+    '''Funkcija sprejme niz iz katerega izlušči podatke o igralcih v obliki seznama slovarjev'''
     players = []
     for player in sample_player.finditer(niz):
         players.append({
@@ -95,6 +96,7 @@ def extract_players(niz):
     return players
 
 def extract_teams(niz):
+    '''Funkcija sprejme niz iz katerega izlušči podatke o ekipah v obliki seznama slovarjev'''
     teams = []
     for team in sample_team.finditer(niz):
         teams.append({
