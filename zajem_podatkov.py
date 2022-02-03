@@ -38,8 +38,8 @@ def save_page(link, file, directory, force=False):
         save_text(string, file, directory)
 
 def main():
-    save_page(players_link, players_file, directory)
-    save_page(teams_link, teams_file, directory)
+    save_page(players_link, players_file, directory, force=True)
+    save_page(teams_link, teams_file, directory, force=True)
 
 
 if __name__ == "__main__":
