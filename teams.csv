@@ -1,4 +1,4 @@
-ID ekipe,Ekipa,Stevilo tekem,Igrane minute,Zadet met,Poskus meta,Zadet met za 3,Poskus meta za 3,Zadeti prosti meti,Poskus prostega meta,Skoki v napadu,Skoki v obrambi,Asistence,Ukradene žoge,Blokade,Izgubljene žoge,Osebne napake,Tocke
+team_id,team,games,minutes_played,fg,fga,fg3,fga3,ft,fta,orb,drb,ast,stl,blk,tov,pf,pts
 MIL,Milwaukee Bucks,72.0,240.7,44.7,91.8,14.4,37.1,16.2,21.4,10.3,37.8,25.5,8.1,4.6,13.8,17.3,120.1
 BRK,Brooklyn Nets,72.0,241.7,43.1,87.3,14.2,36.1,18.1,22.5,8.9,35.5,26.8,6.7,5.3,13.5,19.0,118.6
 WAS,Washington Wizards,72.0,241.7,43.2,90.9,10.2,29.0,20.1,26.2,9.7,35.5,25.5,7.3,4.1,14.4,21.6,116.6
