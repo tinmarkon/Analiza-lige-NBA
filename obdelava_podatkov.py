@@ -80,18 +80,18 @@ def extract_players(niz):
     players = []
     for player in sample_player.finditer(niz):
         players.append({
-            'Stevilka igralca': player.groupdict()['Stevilka'],
-            'Igralec': player.groupdict()['Igralec'],
-            'Pozicija': player.groupdict()['Pozicija'],
-            'ID ekipe': player.groupdict()['ID_ekipe'],
-            'FG': float(player.groupdict()['FG']),
-            'FGA': float(player.groupdict()['FGA']),
-            'Skoki': float(player.groupdict()['TRB']),
-            'Asistence': float(player.groupdict()['AST']),
-            'Ukradene žoge': float(player.groupdict()['STL']),
-            'Blokade': float(player.groupdict()['BLK']),
-            'Izgubljene žoge': float(player.groupdict()['TOV']),
-            'Tocke': float(player.groupdict()['PTS']),        
+            'id': player.groupdict()['Stevilka'],
+            'player': player.groupdict()['Igralec'],
+            'position': player.groupdict()['Pozicija'],
+            'team_id': player.groupdict()['ID_ekipe'],
+            'fg': float(player.groupdict()['FG']),
+            'fga': float(player.groupdict()['FGA']),
+            'trb': float(player.groupdict()['TRB']),
+            'ast': float(player.groupdict()['AST']),
+            'stl': float(player.groupdict()['STL']),
+            'blk': float(player.groupdict()['BLK']),
+            'tov': float(player.groupdict()['TOV']),
+            'pts': float(player.groupdict()['PTS']),        
         })
     return players
 
@@ -100,24 +100,24 @@ def extract_teams(niz):
     teams = []
     for team in sample_team.finditer(niz):
         teams.append({
-            "ID ekipe": team.groupdict()['ID_ekipe'],
-            'Ekipa': team.groupdict()['Ekipa'],
-            'Stevilo tekem': float(team.groupdict()['G']),
-            'Igrane minute': float(team.groupdict()['MP']),
-            'Zadet met': float(team.groupdict()['FG']),
-            'Poskus meta': float(team.groupdict()['FGA']),
-            'Zadet met za 3': float(team.groupdict()['FG3']),
-            'Poskus meta za 3': float(team.groupdict()['FGA3']),
-            'Zadeti prosti meti': float(team.groupdict()['FT']),
-            'Poskus prostega meta': float(team.groupdict()['FTA']),
-            'Skoki v napadu': float(team.groupdict()['ORB']),
-            'Skoki v obrambi': float(team.groupdict()['DRB']),
-            'Asistence': float(team.groupdict()['AST']),
-            'Ukradene žoge': float(team.groupdict()['STL']),
-            'Blokade': float(team.groupdict()['BLK']),
-            'Izgubljene žoge': float(team.groupdict()['TOV']),
-            'Osebne napake': float(team.groupdict()['PF']),
-            'Tocke': float(team.groupdict()['PTS'])
+            "team_id": team.groupdict()['ID_ekipe'],
+            'team': team.groupdict()['Ekipa'],
+            'games': float(team.groupdict()['G']),
+            'minutes_played': float(team.groupdict()['MP']),
+            'fg': float(team.groupdict()['FG']),
+            'fga': float(team.groupdict()['FGA']),
+            'fg3': float(team.groupdict()['FG3']),
+            'fga3': float(team.groupdict()['FGA3']),
+            'ft': float(team.groupdict()['FT']),
+            'fta': float(team.groupdict()['FTA']),
+            'orb': float(team.groupdict()['ORB']),
+            'drb': float(team.groupdict()['DRB']),
+            'ast': float(team.groupdict()['AST']),
+            'stl': float(team.groupdict()['STL']),
+            'blk': float(team.groupdict()['BLK']),
+            'tov': float(team.groupdict()['TOV']),
+            'pf': float(team.groupdict()['PF']),
+            'pts': float(team.groupdict()['PTS'])
         })
     return teams
         
