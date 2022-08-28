@@ -1,6 +1,6 @@
 # Analiza lige NBA
 
-Analiziral bom statistične podatke prvih 200 igralcev ter njihovih ekip v ligi [NBA](https://www.basketball-reference.com/leagues/NBA_2021_per_game.html).
+Analiziral bom statistične podatke igralcev ter njihovih ekip v ligi [NBA](https://www.basketball-reference.com/leagues/NBA_2021_per_game.html).
 
 
 Za vsakega igralca bom zajel naslednje podatke :
@@ -32,7 +32,6 @@ Za vsako ekipo bom zajel:
 
 
 Delovne hipoteze:
-* Ali obstaja povezava med 'učinkovitostjo' igralca (in ekipe) in uspešnostjo ekipe
-* Ali obstajajo igralci zaradi katerih ekipe redno zmagujejo
+* Ali obstajajo kakšne močne negativne povezave med določenimi kategorijami igre
 * Ali obstaja povezava med dobro obrambno igro in zmago na tekmi
 * Ali obstaja povezava med zmagami v podaljških in uspešnostjo ekipe
